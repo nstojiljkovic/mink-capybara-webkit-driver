@@ -1,0 +1,24 @@
+{
+	"name": "essentialdots/mink-capybara-webkit-driver",
+	"description": "Capybara-webkit driver for Mink framework",
+	"keywords": ["capybara", "webkit", "headless", "javascript", "ajax", "testing", "browser"],
+	"homepage": "http://www.essentialdots.com",
+	"license": "GPL",
+	"authors": [
+		{
+			"name": "Nikola Stojiljkovic"
+		}
+	],
+
+	"require": {
+		"php": ">=5.3",
+		"essentialdots/headless": "*",
+		"essentialdots/weasel": "*"
+	},
+
+	"autoload": {
+		"psr-0": {
+			"EssentialDots\\Mink\\Driver": "src/"
+		}
+	}
+}

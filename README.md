@@ -1,2 +1,4 @@
-mink-capybara-webkit-driver
-===========================
+Mink Capybara-Webkit Driver
+=====================
+
+Documentation pending.
