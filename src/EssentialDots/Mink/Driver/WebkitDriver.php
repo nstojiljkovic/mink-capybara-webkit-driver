@@ -583,4 +583,24 @@ JS;
 		$this->browser->render($path, $width, $height);
 	}
 
+	/**
+	 * Capture a screenshot of the current window.
+	 *
+	 * @return  string  screenshot of MIME type image/* depending
+	 *   on driver (e.g., image/png, image/jpeg)
+	 */
+	public function getScreenshot() {
+		throw new UnsupportedDriverActionException('Method getScreenshot is not supported by %s atm.', $this);
+	}
+
+	/**
+	 * Set the dimensions of the window.
+	 *
+	 * @param integer $width set the window width, measured in pixels
+	 * @param integer $height set the window height, measured in pixels
+	 * @param string $name window name (null for the main window)
+	 */
+	public function resizeWindow($width, $height, $name = null) {
+		throw new UnsupportedDriverActionException('Method resizeWindow is not supported by %s atm.', $this);
+	}
 }
