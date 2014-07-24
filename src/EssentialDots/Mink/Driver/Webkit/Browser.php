@@ -145,7 +145,7 @@ class Browser {
 	 * @param int $height
 	 */
 	public function render($path, $width = 1024, $height = 680) {
-		$this->command("Render", array($path, $width, $height));
+		$this->command("Render", array($path, intval($width), intval($height)));
 	}
 
 	/**
@@ -282,6 +282,19 @@ class Browser {
 			array_unshift($arguments, "true"); // set allowUnattached to TRUE
 			array_unshift($arguments, $invokeCommand);
 			return $this->command("Node", $arguments);
+		}
+	}
+
+	/**
+	 * @param string $handle
+	 * @param int $width
+	 * @param int $height
+	 */
+	public function resizeWindow($width, $height, $handle = null) {
+		if (version_compare($this->getVersion(), '1.2', '>=')) {
+			return $this->command('ResizeWindow', array($handle, intval($width), intval($height)));
+		} else {
+			return $this->command('ResizeWindow', array(intval($width), intval($height)));
 		}
 	}
 

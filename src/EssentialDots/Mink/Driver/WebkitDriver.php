@@ -573,24 +573,20 @@ JS;
 	}
 
 	/**
-	 * save image
-	 *
-	 * @param $path
-	 * @param int $width
-	 * @param int $height
-	 */
-	public function render($path, $width = 1024, $height = 100) {
-		$this->browser->render($path, $width, $height);
-	}
-
-	/**
 	 * Capture a screenshot of the current window.
 	 *
 	 * @return  string  screenshot of MIME type image/* depending
 	 *   on driver (e.g., image/png, image/jpeg)
 	 */
 	public function getScreenshot() {
-		throw new UnsupportedDriverActionException('Method getScreenshot is not supported by %s atm.', $this);
+		// $file = tempnam('.', 'screenshot');
+		$file = 'tmp-screenshot.png';
+		$dimensions = $this->browser->evaluateScript('document.body.offsetWidth + "," + document.body.offsetHeight');
+		list($width, $height) = explode(',', $dimensions, 2);
+		$this->browser->render($file, $width, $height);
+		$screenShotData = file_get_contents($file);
+		unlink($file);
+		return $screenShotData;
 	}
 
 	/**
@@ -601,6 +597,6 @@ JS;
 	 * @param string $name window name (null for the main window)
 	 */
 	public function resizeWindow($width, $height, $name = null) {
-		throw new UnsupportedDriverActionException('Method resizeWindow is not supported by %s atm.', $this);
+		return $this->browser->resizeWindow($width, $height, $name);
 	}
 }
